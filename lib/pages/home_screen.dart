@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:aud_vid_call/api/meeting_api.dart';
 import 'package:aud_vid_call/models/meeting_details.dart';
@@ -98,9 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       Response? response = await joinMeeting(meetingId);
       var data = json.decode(response!.body);
+      print('data: $data');
       final meetingDetails = MeetingDetail.fromJson(data["data"]);
+      print('meeting detail: ${meetingDetails.id}');
       goToJoinScreen(meetingDetails);
     } catch (err) {
+      log('THIS IS ERROR: $err');
       FormHelper.showSimpleAlertDialog(
           context, "Meeting App", "Invalid meeting ID", "OK", () {
         Navigator.of(context).pop();
@@ -109,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   goToJoinScreen(MeetingDetail meetingDetail) {
+    print('${(meetingDetail.id)}');
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

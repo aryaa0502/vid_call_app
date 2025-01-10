@@ -65,6 +65,7 @@ class _JoinScreenState extends State<JoinScreen> {
                     child: FormHelper.submitButton("Join", () {
                   if (validateAndSave()) {
                     //MeetingPage
+                    print('meetingDetail passed to meeting page: ${widget.meetingDetail!.id}');
                     Navigator.pushReplacement(context, 
                     MaterialPageRoute(builder: (context) => MeetingPage(
                       meetingId: widget.meetingDetail!.id,

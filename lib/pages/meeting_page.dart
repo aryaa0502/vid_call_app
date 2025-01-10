@@ -49,9 +49,10 @@ class _MeetingPageState extends State<MeetingPage> {
   }
 
   void startMeeting() async {
+    print('meeting id passed to webrtc helper: ${widget.meetingDetail.id}');
     final String userId = await loadUserId();
     meetingHelper = WebRTCMeetingHelper(
-      url: "http://192.168.0.108:4000",
+      url: "http://34.93.141.164:4000",
       meetingId: widget.meetingDetail.id,
       userId: userId,
       name: widget.name,
@@ -187,13 +188,22 @@ class _MeetingPageState extends State<MeetingPage> {
                   );
                 }),
               )
-            : const Center(
+            :  Center(
                 child: Padding(
                   padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Waiting for participants to join...',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey, fontSize: 24),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Waiting for participants to join...',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 24),
+                      ),
+                      Text(
+                        widget.meetingDetail.id!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 24),
+                      ),
+                    ],
                   ),
                 ),
               ),

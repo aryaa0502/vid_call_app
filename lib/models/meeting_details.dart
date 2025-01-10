@@ -12,7 +12,7 @@ class MeetingDetail {
   
   factory MeetingDetail.fromJson(dynamic json) {
     return MeetingDetail(
-      id: json["id"],
+      id: json["_id"],
       hostId: json["hostId"],
       hostName: json["hostName"]
     );

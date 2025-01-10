@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:aud_vid_call/utils/user.utils.dart';
 import 'package:http/http.dart' as http;
 
-String MEETING_API_URL = "http://192.168.0.108:4000/api/meeting";
+String MEETING_API_URL = "http://34.93.141.164:4000/api/meeting";
 var client = http.Client();
 
 Future<http.Response?> startMeeting() async {
