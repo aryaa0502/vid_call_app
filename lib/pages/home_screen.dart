@@ -60,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return null;
               },
               (onSaved) {
+                print('onSaved: $onSaved');
                 meetingId = onSaved;
               },
               borderRadius: 10,
@@ -99,9 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       Response? response = await joinMeeting(meetingId);
       var data = json.decode(response!.body);
-      print('data: $data');
       final meetingDetails = MeetingDetail.fromJson(data["data"]);
-      print('meeting detail: ${meetingDetails.id}');
+      print('meetingDetails object: ${(meetingDetails.toString())}');
+      print('meetingDetails.id: ${meetingDetails.id}');
       goToJoinScreen(meetingDetails);
     } catch (err) {
       log('THIS IS ERROR: $err');
@@ -114,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   goToJoinScreen(MeetingDetail meetingDetail) {
     print('${(meetingDetail.id)}');
+    print('meeting detail passed to join screen: ${(meetingDetail)}');
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

@@ -17,4 +17,9 @@ class MeetingDetail {
       hostName: json["hostName"]
     );
   }
+
+  @override
+  String toString() {
+    return 'MeetingDetail(id: $id, hostId: $hostId, hostName: $hostName)';
+  }
 }

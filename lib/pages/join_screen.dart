@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aud_vid_call/models/meeting_details.dart';
 import 'package:aud_vid_call/pages/meeting_page.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,7 +67,8 @@ class _JoinScreenState extends State<JoinScreen> {
                     child: FormHelper.submitButton("Join", () {
                   if (validateAndSave()) {
                     //MeetingPage
-                    print('meetingDetail passed to meeting page: ${widget.meetingDetail!.id}');
+                    print('meeting ID passed to meeting page: ${widget.meetingDetail!.id}');
+                    
                     Navigator.pushReplacement(context, 
                     MaterialPageRoute(builder: (context) => MeetingPage(
                       meetingId: widget.meetingDetail!.id,

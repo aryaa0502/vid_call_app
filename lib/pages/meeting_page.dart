@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:aud_vid_call/pages/home_screen.dart';
 import 'package:aud_vid_call/utils/user.utils.dart';
 import 'package:aud_vid_call/widgets/control_panel.dart';
@@ -173,6 +175,11 @@ class _MeetingPageState extends State<MeetingPage> {
   }
 
   _buildMeetingRoom() {
+    if(meetingHelper != null && meetingHelper!.connections.isNotEmpty){
+      print('INSIDE BUILD MEETING ROOM');
+      log('MEETING HELPER CONNECTIONS LIST: ${meetingHelper!.connections[0].renderer}');
+      log('RENDERER: ${meetingHelper!.connections[0].renderer}');
+    }
     return Stack(
       children: [
         meetingHelper != null && meetingHelper!.connections.isNotEmpty
@@ -192,9 +199,15 @@ class _MeetingPageState extends State<MeetingPage> {
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Waiting for participants to join...',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 24),
+                      ),
+                      Text(
+                        'SHARE MEETING ID:',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.grey, fontSize: 24),
                       ),
